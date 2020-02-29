@@ -1,5 +1,7 @@
 # Shitty maze solver
 
-Doesn't work on big mazes and is full of garbage.
+1. Doesn't work on big mazes
 
-Also it's slow as hell.
+2. It's slow as hell.
+
+3. new.py is the only file that works
