@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import load_maze
 from create_final_image import create_final_image
 
