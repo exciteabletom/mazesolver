@@ -1,6 +1,5 @@
 import load_maze
 from create_final_image import create_final_image
-from pprint import pprint
 
 input_path = input("Where is your maze image?  ")
 
