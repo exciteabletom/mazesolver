@@ -2,7 +2,7 @@
 > Created by Tommy Dougiamas  
 > Licensed under GPLv3
 ### What are the rules for maze images?
-My algorithm can find the shortest path through any maze that follows these rules:
+This algorithm can find the shortest path through any maze that follows these rules:
 
 - Walls marked with black pixels and paths marked with white pixels
 - Walls around the entire maze
