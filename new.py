@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from PIL import Image
-img_path = "./pics/loops.jpg"
+img_path = "./pics/maze.jpg"
 input_img = Image.open(img_path)
 pixels = input_img.load()
 
