@@ -80,26 +80,19 @@ def set_cell_value(coords: tuple, value: str or int):
 	maze[coords[0]][coords[1]] = value
 
 
-def get_final_path():
+def get_final_path(end_pos: tuple):
 	"""
 	Starts at the exit of the maze and works backwards to the entrance.
-	:return: a list of all the cell coordinates that make up the path from the entrance to the exit
+	:return: a list of all the cell coordinates that make up the path from the exit to the entrance
 	"""
-	final_path = []
 	reverse_final_path = []
 
-	end = get_cells_by_value('e')
-	if len(end) > 1:
-		raise ValueError("More than one exit")
+	current_cell = end_pos
 
-	end = end[0]
+	dist_from_start = get_cell_value(end_pos)
 
-	current_cell = (end[0] - 1, end[1])
-
-	dist_from_start = maze[end[0] - 1][end[1]]
-
-	reverse_final_path.append(end)
 	reverse_final_path.append(current_cell)
+
 	while dist_from_start >= 0:
 		neighbours = get_cell_neighbours(current_cell, mode="backtrack")
 		for coords in neighbours:
@@ -120,11 +113,10 @@ def main():
 	create our final path,
 	create our output image
 	"""
-	start_pos = (None, None)  # variable that stores the entrance coords
-	for index, value in enumerate(maze[0]):  # loop through first row
-		if value == "s":  # since there is only one path in first row, this must be the entrance
-			start_pos = (0, index)  # save the coordinates of the entrance
-			maze[0][index] = 0  # mark the entrance as visited
+	start_pos: tuple = get_cells_by_value("s")[0]  # coords of entrance
+	end_pos: tuple = get_cells_by_value("e")[0]  # coords of exit of maze
+
+	set_cell_value(start_pos, 0)  # mark the entrance as visited
 
 	# main program loop
 	# exits only when all cells have been searched
@@ -143,15 +135,15 @@ def main():
 					open_coordinates.append(neighbour)
 
 		if not open_coordinates:
+			set_cell_value(end_pos, start_dist + 1)
 			break
 
 		for pos in open_coordinates:
 			set_cell_value(pos, start_dist + 1)
 
 		start_dist += 1
-		
-		
-	final_path = get_final_path()
+
+	final_path = get_final_path(end_pos)
 	create_final_image(final_path, input_path)
 
 
