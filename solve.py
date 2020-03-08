@@ -9,7 +9,7 @@ maze = load_maze.main(input_path)
 
 def get_cell_value(coords: tuple):
 	"""
-
+	Gets the value of the cell at the specified coordinates
 	:param coords: tuple containing x and y values
 	:return: value of the cell at the specifed coordinates
 	"""
@@ -21,12 +21,13 @@ def get_cell_value(coords: tuple):
 
 def get_cell_neighbours(coords: tuple, mode="normal"):
 	"""
-
+	Gets the values of all cells that neighbour the specified cell
 	:param coords: Tuple containing the x and y values of the cell we
 					want to check the neighbours of
+	:param mode: specifys whether we are doing our first pass or backtracking from
+					the exit
 	:return: coordinates of all neighbours that have not been visited in
 				a list of tuples. Example: [(x,y), (x,y), (x,y)]
-
 	"""
 	# different tuples that contain the coords of all positions
 	# relative to our input tuple
@@ -148,6 +149,8 @@ def main():
 			set_cell_value(pos, start_dist + 1)
 
 		start_dist += 1
+		
+		
 	final_path = get_final_path()
 	create_final_image(final_path, input_path)
 
