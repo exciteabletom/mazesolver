@@ -22,7 +22,7 @@ def get_cell_value(coords: tuple):
 def get_cell_neighbours(coords: tuple, mode="normal"):
 	"""
 
-	:param coords: Tuple containing the x and y values of the tuple we
+	:param coords: Tuple containing the x and y values of the cell we
 					want to check the neighbours of
 	:return: coordinates of all neighbours that have not been visited in
 				a list of tuples. Example: [(x,y), (x,y), (x,y)]
@@ -60,7 +60,7 @@ def get_cells_by_value(value):
 	"""
 	Gets cells based on their value.
 	:param value: The value to look for
-	:return: list of all coordinates that match the specified value
+	:return: list of all coordinates that contain the specified value
 	"""
 	all_matching_cells = []  # the list containing all the coordinates of cells
 	for row_index, row in enumerate(maze):
@@ -80,6 +80,10 @@ def set_cell_value(coords: tuple, value: str or int):
 
 
 def get_final_path():
+	"""
+	Starts at the exit of the maze and works backwards to the entrance.
+	:return: a list of all the cell coordinates that make up the path from the entrance to the exit
+	"""
 	final_path = []
 	reverse_final_path = []
 
@@ -109,6 +113,12 @@ def get_final_path():
 
 
 def main():
+	"""
+	Main function that loops through every cell in the maze then runs functions that do the following:
+	
+	create our final path,
+	create our output image
+	"""
 	start_pos = (None, None)  # variable that stores the entrance coords
 	for index, value in enumerate(maze[0]):  # loop through first row
 		if value == "s":  # since there is only one path in first row, this must be the entrance
