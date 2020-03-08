@@ -23,8 +23,10 @@ This algorithm can find the shortest path through any maze that follows these ru
 We now have the shortest path from the entrance to the exit!
 
 ### How do I use it?
-To use the maze solver simply provide an image which meets the specifications listed above.
+To use the maze solver create an image which meets the specifications listed above (look at the example images for help).
 
-Then run 'solve.py' and supply it with the path to the image! The image will be saved in "pics/{image_name}_out.jpg".
+Then run 'solve.py' and supply it with the path to your image.
 
-If you don't want to make an image, simply use some of the ones I have premade in the 'pics' directory
+The image will be saved in "pics/{image_name}_out.jpg".
+
+If you don't want to make an image, you can use some of the premade ones.
