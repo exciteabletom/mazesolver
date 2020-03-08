@@ -10,7 +10,7 @@ This algorithm can find the shortest path through any maze that follows these ru
 
 ### How does the algorithm work?
 
-- Start at the exit and label it zero.
+- Start at the entrance and label it zero.
 
 - Move to any neighbouring cells and mark them with 1
 
@@ -18,7 +18,7 @@ This algorithm can find the shortest path through any maze that follows these ru
 
 - Continue doing this until all cells are marked
 
-- Start from the exit of the maze and move to any neighbouring path that is marked with a number lower than the current number.
+- Start from the exit of the maze and move to any neighbouring path that is marked with a number lower than the current number. Until we reach 0 (the entrance)
 
 We now have the shortest path from the entrance to the exit!
 
