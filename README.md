@@ -8,7 +8,7 @@ This algorithm can find the shortest path through any maze that follows these ru
 - Walls around the entire maze
 - One entrance on the top row and one exit on the bottom row
 
-### How does it work?
+### How does the algorithm work?
 
 - Start at the exit and label it zero.
 
@@ -28,8 +28,3 @@ To use the maze solver simply provide an image which meets the specifications li
 Then run 'solve.py' and supply it with the path to the image! The image will be saved in "./pics/out.jpg"
 
 If you don't want to make an image, simply use some of the ones I have premade in the 'pics' directory
-
-
-
-
-
