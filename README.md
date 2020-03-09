@@ -10,15 +10,15 @@ This algorithm finds the shortest path through black and white maze images. It o
 - Walls around the entire maze
 - One entrance on the top row and one exit on the bottom row
 
+If this is confusing, check out some of the example mazes in the pics directory.
+
 ### How do I use it?
 
-To use the maze solver create an image which meets the specifications listed above (look at the example images for help).
+To use the maze solver create an image which meets the specifications listed above.
 
 Then run 'solve.py' and supply it with the path to your image.
 
 The image will be saved in "pics/{image_name}_out.jpg".
-
-If you don't want to make an image, you can use some of the premade ones.
 
 
 ### How does the algorithm work?
