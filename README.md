@@ -1,6 +1,6 @@
 # Maze Solver
 > Created by Tommy Dougiamas  
-> Licensed under GPLv3
+> Licensed under GNU GPLv3
 ### What are the rules for maze images?
 This algorithm can find the shortest path through any maze that follows these rules:
 
