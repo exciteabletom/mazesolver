@@ -23,11 +23,11 @@ def get_cell_neighbours(coords: tuple, mode="normal"):
 	"""
 	Gets the values of all cells that neighbour the specified cell
 	:param coords: Tuple containing the x and y values of the cell we
-					want to check the neighbours of
+	               want to check the neighbours of
 	:param mode: specifys whether we are doing our first pass or backtracking from
-					the exit
+	             the exit
 	:return: coordinates of all neighbours that have not been visited in
-				a list of tuples. Example: [(x,y), (x,y), (x,y)]
+	         a list of tuples. Example: [(x,y), (x,y), (x,y)]
 	"""
 	# different tuples that contain the coords of all positions
 	# relative to our input tuple
