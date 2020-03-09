@@ -1,12 +1,25 @@
 # Maze Solver
 > Created by Tommy Dougiamas  
 > Licensed under GNU GPLv3
-### What are the rules for maze images?
-This algorithm can find the shortest path through any maze that follows these rules:
 
+This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in red.
+
+
+### What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
 - Walls around the entire maze
 - One entrance on the top row and one exit on the bottom row
+
+### How do I use it?
+
+To use the maze solver create an image which meets the specifications listed above (look at the example images for help).
+
+Then run 'solve.py' and supply it with the path to your image.
+
+The image will be saved in "pics/{image_name}_out.jpg".
+
+If you don't want to make an image, you can use some of the premade ones.
+
 
 ### How does the algorithm work?
 
@@ -22,11 +35,3 @@ This algorithm can find the shortest path through any maze that follows these ru
 
 We now have the shortest path from the entrance to the exit!
 
-### How do I use it?
-To use the maze solver create an image which meets the specifications listed above (look at the example images for help).
-
-Then run 'solve.py' and supply it with the path to your image.
-
-The image will be saved in "pics/{image_name}_out.jpg".
-
-If you don't want to make an image, you can use some of the premade ones.
