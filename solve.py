@@ -108,41 +108,47 @@ def get_final_path(end_pos: tuple):
 
 def main():
 	"""
-	Main loop that sets some values required by the algorithm and 
+	Main loop that sets some values required by the algorithm and
 	calls functions that work together to produce a solution image.
 	"""
-	start_pos: tuple = get_cells_by_value("s")[0]  # coords of entrance
-	end_pos: tuple = get_cells_by_value("e")[0]  # coords of exit of maze
+	start_and_end_pos = (get_cells_by_value("s"), get_cells_by_value("e"))
+
+	for tup in start_and_end_pos:
+		if len(tup) > 1:
+			raise ValueError("More than one entrance or exit")
+
+
+	start_pos: tuple = start_and_end_pos[0][0]  # coords of entrance
+	end_pos: tuple = start_and_end_pos[1][0]  # coords of exit of maze
 
 	set_cell_value(start_pos, 0)  # mark the entrance as visited
 
-	# main program loop
-	# exits only when all cells have been searched
 	start_dist = 0  # the distance from the entrance
 
+	# main program loop
+	# exits when all cells have been searched
 	while True:
 		open_coordinates = []  # a list containing all coordinates that can be travelled to
 
-		if start_dist == 0:  # if we are at the entrance
-			open_coordinates = get_cell_neighbours(start_pos)
+		# for cells that contain a value equal to the furthest distance from the start
+		for cell in get_cells_by_value(start_dist): 
+			neighbours = get_cell_neighbours(cell)  # get all open neighbouring cells
+			for neighbour in neighbours:
+				open_coordinates.append(neighbour)  # append all neightbours to our master open coords list
 
-		else:
-			# for cells that contain a value equal to the furthest distance from the start
-			for cell in get_cells_by_value(start_dist): 
-				neighbours = get_cell_neighbours(cell)  # get all open neighbouring cells
-				for neighbour in neighbours:
-					open_coordinates.append(neighbour)  
-
-		if not open_coordinates:
+		if not open_coordinates:  # if there were no more open coordinates
 			set_cell_value(end_pos, start_dist + 1)
-			break
+			break  # end loop
 
 		for pos in open_coordinates:
 			set_cell_value(pos, start_dist + 1)
 
 		start_dist += 1
 
+	# get list of all cells in path through maze
 	final_path = get_final_path(end_pos)
+
+	# call void function that outputs our solved image using the solved path
 	create_final_image(final_path, input_path)
 
 
