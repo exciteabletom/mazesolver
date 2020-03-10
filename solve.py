@@ -24,7 +24,7 @@ def get_cell_neighbours(coords: tuple, mode="normal"):
 	Gets the values of all cells that neighbour the specified cell
 	:param coords: Tuple containing the x and y values of the cell we
 	               want to check the neighbours of
-	:param mode: specifys whether we are doing our first pass or backtracking from
+	:param mode: specifies whether we are doing our first pass or backtracking from
 	             the exit
 	:return: coordinates of all neighbours that have not been visited in
 	         a list of tuples. Example: [(x,y), (x,y), (x,y)]
@@ -58,9 +58,9 @@ def get_cell_neighbours(coords: tuple, mode="normal"):
 
 
 def get_cells_by_value(value):
-	"""
-	Gets cells based on their value.
-	:param value: The value to look for
+	""" 
+	Get cell coordinates based on the value of the cell.
+	:param value: The value to search for
 	:return: list of all coordinates that contain the specified value
 	"""
 	all_matching_cells = []  # the list containing all the coordinates of cells
@@ -108,10 +108,8 @@ def get_final_path(end_pos: tuple):
 
 def main():
 	"""
-	Main function that loops through every cell in the maze then runs functions that do the following:
-	
-	create our final path,
-	create our output image
+	Main loop that sets some values required by the algorithm and 
+	calls functions that work together to produce a solution image.
 	"""
 	start_pos: tuple = get_cells_by_value("s")[0]  # coords of entrance
 	end_pos: tuple = get_cells_by_value("e")[0]  # coords of exit of maze
@@ -129,10 +127,11 @@ def main():
 			open_coordinates = get_cell_neighbours(start_pos)
 
 		else:
-			for cell in get_cells_by_value(start_dist):
-				neighbours = get_cell_neighbours(cell)
+			# for cells that contain a value equal to the furthest distance from the start
+			for cell in get_cells_by_value(start_dist): 
+				neighbours = get_cell_neighbours(cell)  # get all open neighbouring cells
 				for neighbour in neighbours:
-					open_coordinates.append(neighbour)
+					open_coordinates.append(neighbour)  
 
 		if not open_coordinates:
 			set_cell_value(end_pos, start_dist + 1)
