@@ -2,7 +2,7 @@
 > Created by Tommy Dougiamas  
 > Licensed under GNU GPLv3
 
-This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in red.
+This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.
 ### What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
 
