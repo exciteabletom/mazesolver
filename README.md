@@ -3,8 +3,6 @@
 > Licensed under GNU GPLv3
 
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in red.
-
-
 ### What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
 
@@ -12,7 +10,7 @@ This algorithm finds the shortest path through black and white maze images. It o
 
 - One entrance on the top row and one exit on the bottom row
 
-If this is confusing, check out some of the example mazes in the pics directory.
+> If this is confusing, check out some of the example mazes in the pics directory.
 
 ### How do I use it?
 
