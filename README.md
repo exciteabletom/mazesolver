@@ -18,7 +18,7 @@ To use the maze solver create an image which meets the specifications listed abo
 
 Then run 'solve.py' and supply it with the path to your image.
 
-The solution image will be saved in "pics/{image\_name}_out.jpg".
+The solution image will be saved in "pics/{ImageName}_out.jpg".
 
 
 ### How does the algorithm work?
