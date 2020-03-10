@@ -15,7 +15,9 @@ def get_cell_value(coords: tuple):
 	"""
 	try:
 		return maze[coords[0]][coords[1]]
-	except IndexError:  # sometimes we get an IndexError when at the edge of the maze
+	# Sometimes we get an IndexError if the maze doesn't have borders
+	# This solution is not perfect so it is still best practice to use borders
+	except IndexError:  
 		return False
 
 
@@ -110,6 +112,8 @@ def main():
 	"""
 	Main loop that sets some values required by the algorithm and
 	calls functions that work together to produce a solution image.
+
+	:raises ValueError: If there is more than one entrance or exit in the image.
 	"""
 	start_and_end_pos = (get_cells_by_value("s"), get_cells_by_value("e"))
 
