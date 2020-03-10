@@ -7,7 +7,9 @@ This algorithm finds the shortest path through black and white maze images. It o
 
 ### What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
+
 - Walls around the entire maze
+
 - One entrance on the top row and one exit on the bottom row
 
 If this is confusing, check out some of the example mazes in the pics directory.
