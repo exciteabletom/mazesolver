@@ -83,7 +83,7 @@ def get_cell_by_value(value):
 	"""
 	vals = get_cells_by_value(value)
 	if len(vals) > 1:
-		raise ValueError(f"Expected one value '{value}'. Got {len(vals)}.")
+		raise ValueError(f"Expected only one cell to have value '{value}'. {len(vals)} cells contained the value.")
 
 	return vals[0]
 
