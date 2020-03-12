@@ -62,7 +62,7 @@ def get_cell_neighbours(coords: tuple, mode="normal"):
 def get_cells_by_value(value):
 	""" 
 	Get cell coordinates based on the value of the cell.
-	:param value: The value to search for
+	:param value: The value to search cells for
 	:return: list of all coordinates that contain the specified value
 	"""
 	all_matching_cells = []  # the list containing all the coordinates of cells
@@ -72,6 +72,20 @@ def get_cells_by_value(value):
 				all_matching_cells.append((row_index, column_index))
 
 	return all_matching_cells
+
+
+def get_cell_by_value(value):
+	"""
+	The same as get_cells_by_value, except raises a ValueError if there is more than one cell with that value
+	:param value: The value to search cells for
+	:raises ValueError: If more then one of the value is found in the maze.
+	:return: the cell coordinate that contains the value
+	"""
+	vals = get_cells_by_value(value)
+	if len(vals) > 1:
+		raise ValueError(f"Expected one value '{value}'. Got {len(vals)}.")
+
+	return vals[0]
 
 
 def set_cell_value(coords: tuple, value: str or int):
@@ -115,15 +129,9 @@ def main():
 
 	:raises ValueError: If there is more than one entrance or exit in the image.
 	"""
-	start_and_end_pos = (get_cells_by_value("s"), get_cells_by_value("e"))
 
-	for tup in start_and_end_pos:
-		if len(tup) > 1:
-			raise ValueError("More than one entrance or exit")
-
-
-	start_pos: tuple = start_and_end_pos[0][0]  # coords of entrance
-	end_pos: tuple = start_and_end_pos[1][0]  # coords of exit of maze
+	start_pos: tuple = get_cell_by_value("s")  # coords of entrance
+	end_pos: tuple = get_cell_by_value("e")  # coords of exit of maze
 
 	set_cell_value(start_pos, 0)  # mark the entrance as visited
 
