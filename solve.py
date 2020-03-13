@@ -23,11 +23,11 @@ def get_cell_value(coords: tuple):
 
 def get_cell_neighbours(coords: tuple, mode="normal"):
 	"""
-	Gets the values of all cells that neighbour the specified cell
+	Gets the values of all cells that neighbour the cell at the specified coordinates
 	:param coords: Tuple containing the x and y values of the cell we
 	               want to check the neighbours of
 	:param mode: specifies whether we are doing our first pass or backtracking from
-	             the exit
+	             the exit. Is either "normal" (default) or "backtrack"
 	:return: coordinates of all neighbours that have not been visited in
 	         a list of tuples. Example: [(x,y), (x,y), (x,y)]
 	"""
@@ -90,6 +90,7 @@ def get_cell_by_value(value):
 
 def set_cell_value(coords: tuple, value: str or int):
 	"""
+	Sets the value of a cell at the specified coordinates.
 	:param coords: The coordinates of the cell to be changed
 	:param value: The value we want the cell to be set to
 	"""
@@ -101,13 +102,14 @@ def get_final_path(end_pos: tuple):
 	Starts at the exit of the maze and works backwards to the entrance.
 	:return: a list of all the cell coordinates that make up the path from the exit to the entrance
 	"""
-	reverse_final_path = []
+	reverse_final_path = []  # stores a path from the exit to the entrance
 
-	current_cell = end_pos
-
-	dist_from_start = get_cell_value(end_pos)
+	current_cell = end_pos  # stores the cell we are currently at
 
 	reverse_final_path.append(current_cell)
+
+	dist_from_start = get_cell_value(end_pos)  # the distance from the entrance
+
 
 	while dist_from_start >= 0:
 		neighbours = get_cell_neighbours(current_cell, mode="backtrack")
