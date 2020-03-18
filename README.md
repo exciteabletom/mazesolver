@@ -1,6 +1,5 @@
 # Maze Solver
-> Created by Tommy Dougiamas  
-> Licensed under GNU GPLv3
+#### Created by Tommy Dougiamas  
 
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.
 ### What are the rules for maze images?
@@ -10,7 +9,7 @@ This algorithm finds the shortest path through black and white maze images. It o
 
 - One entrance on the top row and one exit on the bottom row
 
-> If this is confusing, check out some of the example mazes in the pics directory.
+*If this is confusing, check out some of the example mazes in the **pics** directory.*
 
 ### How do I use it?
 
@@ -34,4 +33,7 @@ The solution image will be saved in "pics/{ImageName}_out.jpg".
 - Start from the exit of the maze and move to any neighbouring path that is marked with a number lower than the current number. Until we reach 0 (the entrance)
 
 We now have the shortest path from the entrance to the exit!
+
+> Licensed under GNU GPLv3
+
 
