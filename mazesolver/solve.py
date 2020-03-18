@@ -33,7 +33,8 @@ def main():
 	try:
 		cmd_args = [i.lower() for i in sys.argv]
 		cmd_args = cmd_args[1:]
-		print(cmd_args)
+		if len(cmd_args) == 0:
+			raise IndexError
 	except IndexError:
 		print("No arguments provided. See --help")
 		exit()
