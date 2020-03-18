@@ -26,13 +26,15 @@ setup(
 
 	],
 
+	entry_points = {
+		"console_scripts": ["mazesolver = mazesolver.solve:main"],
+	},
+
 	keywords = "maze algortihm image solve",
 
-	packages = find_packages(where="mazesolver"),
+	packages = ["mazesolver"],
 
 	python_requires = ">=3.7",
 
 	install_requires = ["Pillow>=6.0"]
-	#dependency_links = [
-
 )	

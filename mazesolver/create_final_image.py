@@ -1,12 +1,13 @@
 from PIL import Image
+import os
 
-
-def main(solution_path, input_path):
+def main(solution_path, input_path, output_path):
 	"""
 	Void function that marks the solution path into the image with green and saves the image
 
 	:param solution_path: list of coordinates to the cells in the solution
 	:param input_path: User-supplied path to input maze image
+	:param output_path: User-supplied path to a directory where the image will be saved
 	"""
 	solution_image = Image.open(input_path)
 
@@ -15,7 +16,11 @@ def main(solution_path, input_path):
 
 	image_name = input_path.split("/")[-1]
 	image_name = image_name.split(".")[0]
+		
+	out_path = f"{output_path}/{image_name}_out.jpg"
 
-	solution_image.save(f"./pics/{image_name}_out.jpg", subsampling=0, quality=100)
+	solution_image.save(out_path, subsampling=0, quality=100)
+
+	print("Your image was saved at out_path")
 
 
