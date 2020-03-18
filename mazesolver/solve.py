@@ -31,7 +31,9 @@ def main():
 
 	# Command line argument interpreter
 	try:
-		cmd_args = [i.lower for i in sys.argv]
+		cmd_args = [i.lower() for i in sys.argv]
+		cmd_args = cmd_args[1:]
+		print(cmd_args)
 	except IndexError:
 		print("No arguments provided. See --help")
 		exit()
@@ -44,10 +46,13 @@ def main():
 	# Main solve command
 	try:
 		for index, arg in enumerate(cmd_args):
+			breakpoint()
 			if arg == "-i" or arg == "--input":
+				print("-i")
 				input_path = cmd_args[index+1]
 
 			elif arg == "-o" or arg == "--output":
+				print("-o")
 				output_path = cmd_args[index+1]
 
 	except IndexError:
@@ -214,7 +219,7 @@ def main():
 		final_path = get_final_path(end_pos)
 
 		# call void function that outputs our solved image using the solved path
+		breakpoint()
 		create_final_image.main(final_path, input_path, output_path)
 
-if __name__ == "__main__":
-	main()
+	solve()

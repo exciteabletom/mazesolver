@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from setuptools import setup, find_packages
 
 with open("./README.md", encoding="utf-8") as readme:
@@ -18,7 +17,7 @@ setup(
 	author_email = "tom@digitalnook.net",
 
 	classifiers = [
-		"Development Status :: 5 - Stable",
+		#"Development Status :: 5 - Stable",
 
 		"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 				
