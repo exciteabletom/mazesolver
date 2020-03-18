@@ -6,7 +6,7 @@ with open("./README.md", encoding="utf-8") as readme:
 
 setup(
 	name = "mazesolver",
-	version = "1.1.2",
+	version = "1.2.0",
 
 	description = "A shortest-path maze solving algorithm for image-based mazes.",
 	long_description = long_description,

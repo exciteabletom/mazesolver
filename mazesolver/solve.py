@@ -20,6 +20,8 @@ Github: https://github.com/exciteabletom
 def main():
 	global input_path
 	global output_path
+	output_path = None
+
 	### Production imports
 	from . import load_maze
 	from . import create_final_image
@@ -44,23 +46,19 @@ def main():
 		print(help_message)
 		exit()
 
-	# Main solve command
+	# Main solve commands
 	try:
 		for index, arg in enumerate(cmd_args):
-			breakpoint()
 			if arg == "-i" or arg == "--input":
-				print("-i")
 				input_path = cmd_args[index+1]
 
 			elif arg == "-o" or arg == "--output":
-				print("-o")
 				output_path = cmd_args[index+1]
 
 	except IndexError:
 		print(help_message)
+		exit()
 		
-		
-
 	maze = load_maze.main(input_path)
 
 
@@ -220,7 +218,6 @@ def main():
 		final_path = get_final_path(end_pos)
 
 		# call void function that outputs our solved image using the solved path
-		breakpoint()
 		create_final_image.main(final_path, input_path, output_path)
 
 	solve()
