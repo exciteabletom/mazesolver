@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import load_maze
-from create_final_image import create_final_image
+from . import load_maze
+from . import create_final_image
 
 input_path = input("Where is your maze image?  ")
 
@@ -163,7 +163,7 @@ def main():
 	final_path = get_final_path(end_pos)
 
 	# call void function that outputs our solved image using the solved path
-	create_final_image(final_path, input_path)
+	create_final_image.main(final_path, input_path)
 
 
 main()

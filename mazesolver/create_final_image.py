@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-def create_final_image(solution_path, input_path):
+def main(solution_path, input_path):
 	"""
 	Void function that marks the solution path into the image with green and saves the image
 
