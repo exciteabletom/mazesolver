@@ -1,8 +1,51 @@
 #!/usr/bin/env python3
-from . import load_maze
-from . import create_final_image
 
-input_path = input("Where is your maze image?  ")
+### Production imports
+# from . import load_maze
+# from . import create_final_image
+### Development imports
+import load_maze
+import create_final_image
+### Enviroment Agnostic imports
+import sys
+
+# Command line argument interpreter
+try:
+	cmd_arg1 = sys.argv[1].lower()
+except IndexError:
+	print("No arguments provided")
+	exit()
+	
+# Help command
+if cmd_arg1 == "help" or cmd_arg1 == "-h":
+	print("""
+	Valid Commands
+	--------------
+	-h or help         -  Prints out this help page
+	solve=<image_path> -  Solves the image at "image_path"
+
+	Contact info
+	--------------
+	Email: tom@digitalnook.net
+	Github: https://github.com/exciteabletom
+
+	*Licensed under GPLv3*
+	""")
+	exit()
+
+# Main solve command
+elif cmd_arg1[0:5] == "solve":
+	try:
+		input_path = cmd_arg1.split("=")[1]
+	except IndexError:
+		print("No input path provided. See the help page for more info (-h) ")
+		exit()
+
+else:
+	print(f"Command '{cmd_arg1}' is not valid")
+	exit()
+
+
 
 maze = load_maze.main(input_path)
 
