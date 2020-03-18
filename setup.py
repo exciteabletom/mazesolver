@@ -33,7 +33,7 @@ setup(
 
 	packages = ["mazesolver"],
 
-	python_requires = ">=3.7",
+	python_requires = ">=3.5",
 
 	install_requires = ["Pillow>=6.0"]
 )	
