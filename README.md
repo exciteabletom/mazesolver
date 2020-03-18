@@ -2,6 +2,12 @@
 #### Created by Tommy Dougiamas  
 
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.
+
+### Installing
+First make sure check that your python install version is >=3.5 with `python3 -V`.
+
+To install, simply run `sudo python3 -m pip install mazesolver` on the command line. 
+
 ### What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
 
@@ -15,9 +21,9 @@ This algorithm finds the shortest path through black and white maze images. It o
 
 To use the maze solver create an image which meets the specifications listed above.
 
-Then run 'solve.py' and supply it with the path to your image.
+You can use `mazesolver --help` to get a list of commands.
 
-The solution image will be saved in "pics/{ImageName}_out.jpg".
+Normal usage will look something like this: `mazesolver -i path/to/input -o /path/to/dir`
 
 
 ### How does the algorithm work?
