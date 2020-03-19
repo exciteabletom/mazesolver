@@ -9,15 +9,13 @@ This algorithm finds the shortest path through black and white maze images. It o
 **Easy Installation**
 
 Check that your python version is >=3.5 with `python3 -V`. (You might have to use `python3.5` or similar).
-Also make sure that pip is installed with `python3 -m pip -V`
+Also make sure that pip is installed with `python3 -m pip -V`.
 
 To install, simply run `python3 -m pip install mazesolver` on the command line as root/admin. 
 
-You can run the tool using `mazesolver`
+You can run the tool using `mazesolver`.
 
 **Install from source**
-
-If you want to install manually you will have to do something like the following.
 
 ##### For GNU/Linux:
 
@@ -31,7 +29,7 @@ If you want to install manually you will have to do something like the following
 
 ##### For Windows CMD:
 
-> Make sure your prompt has admin permissions
+Make sure your prompt has admin permissions.
 
 `git clone https://github.com/exciteabletom/mazesolver.git`
 
@@ -74,10 +72,9 @@ Normal usage will look something like this: `mazesolver -i path/to/input_img -o 
 
 - Continue doing this until all cells are marked
 
-- Start from the exit of the maze and move to any neighbouring path that is marked with a number lower than the current number. Until we reach 0 (the entrance)
+- Start from the exit of the maze and move to any neighbouring cell that == the current cell's number -1. Until we reach 0 (the entrance).
 
 We now have the shortest path from the entrance to the exit!
 
 
 > Licensed under GNU GPLv3
-
