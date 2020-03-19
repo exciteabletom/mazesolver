@@ -3,5 +3,5 @@
 *pycache*
 venv/
 *egg*
-build/
-dist/
+*build/
+*dist/
