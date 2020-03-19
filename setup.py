@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 from setuptools import setup, find_packages
-
+from mazesolver import strings
 with open("./README.md", encoding="utf-8") as readme:
 	long_description = readme.read()
 
 setup(
 	name="mazesolver",
-	version="1.2.1",
+	version=strings.version,
 
 	description="A shortest-path maze solving algorithm for image-based mazes.",
 	long_description=long_description,
