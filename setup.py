@@ -5,35 +5,35 @@ with open("./README.md", encoding="utf-8") as readme:
 	long_description = readme.read()
 
 setup(
-	name = "mazesolver",
-	version = "1.2.0",
+	name="mazesolver",
+	version="1.2.1",
 
-	description = "A shortest-path maze solving algorithm for image-based mazes.",
-	long_description = long_description,
-	long_description_content_type = "text/markdown",
+	description="A shortest-path maze solving algorithm for image-based mazes.",
+	long_description=long_description,
+	long_description_content_type="text/markdown",
 
-	url = "https://github.com/exciteabletom/mazesolver",
-	author = "Tommy Dougiamas",
-	author_email = "tom@digitalnook.net",
+	url="https://github.com/exciteabletom/mazesolver",
+	author="Tommy Dougiamas",
+	author_email="tom@digitalnook.net",
 
-	classifiers = [
-		#"Development Status :: 5 - Stable",
+	classifiers=[
+		# "Development Status :: 5 - Stable",
 
 		"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-				
+
 		"Programming Language :: Python :: 3"
 
 	],
 
-	entry_points = {
-		"console_scripts": ["mazesolver = mazesolver.solve:main"],
+	entry_points={
+		"console_scripts": ["mazesolver = mazesolver.__main__:main"],
 	},
 
-	keywords = "maze algortihm image solve",
+	keywords="maze algortihm image solve",
 
-	packages = ["mazesolver"],
+	packages=["mazesolver"],
 
-	python_requires = ">=3.5",
+	python_requires=">=3.5",
 
-	install_requires = ["Pillow>=6.0"]
-)	
+	install_requires=["Pillow>=6.0"]
+)

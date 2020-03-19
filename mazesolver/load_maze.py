@@ -1,8 +1,7 @@
-from PIL import Image
-from time import sleep
+from PIL import Image  # Pillow >=6.0
 
 
-def main(input_path):
+def load(input_path):
 	"""
 	Converts the input image into a matrix where:
 	'#' == walls
@@ -20,28 +19,29 @@ def main(input_path):
 
 	maze: list = []  # this will contain our matrix
 
-	for y in range(height):
+	for y in range(height):  # For each row
 		maze.append([])  # append row
-		for x in range(width):
+		for x in range(width):  # for each column
 			current_pixel = pixels[x, y]  # get current pixel from coords
 			pixel_color = current_pixel[0] + current_pixel[1] + current_pixel[2]  # get the sum of all RGB values
 
-			if pixel_color < 600:  # if pixel is white
-				maze[-1].append("#")  # append path to most recent row
+			# The way colours are matched is very loose so theoretically you could use any two colours where one of
+			# them exceeds an RGB sum of 600 and one of them doesn't. E.g. Red for walls and white for paths
+			# However this is not recommended
 
-			elif pixel_color >= 600:  # if pixel is black
-				maze[-1].append(".")  # append wall to most recent row
+			if pixel_color < 600:  # if pixel is black
+				maze[-1].append("#")  # append wall to most recent row
 
-			else:
-				raise ValueError("An error occured when determining the color of some pixels")
+			elif pixel_color >= 600:  # if pixel is white
+				maze[-1].append(".")  # append path to most recent row
 
 	for index, cell in enumerate(maze[0]):
 		if cell == ".":
-			maze[0][index] = "s"
+			maze[0][index] = "s"  # The only path in the top row must be the start
 
 	for index, cell in enumerate(maze[-1]):
 		if cell == ".":
-			maze[-1][index] = "e"
+			maze[-1][index] = "e"  # The only path in the bottom row must be the exit
 
 	return maze
 
