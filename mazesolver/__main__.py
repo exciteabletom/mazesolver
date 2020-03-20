@@ -4,6 +4,7 @@ from . import load_maze
 from . import solve
 from . import create_final_image
 from . import strings
+from . import g  # globals
 ## Environment Agnostic imports
 import sys
 
@@ -30,12 +31,21 @@ def main():
 		return 0 
 
 	# Main solve commands
+	skip_next_arg = False  # Boolean indicating whether the current interation should be skipped
+
 	for index, arg in enumerate(cmd_args):
+		breakpoint()
+		if skip_next_arg == True:
+			skip_next_arg = False
+			continue
+
 		if arg == "-i" or arg == "--input":
 			input_path = cmd_args[index + 1]  # the argument after '-i' is the input path
+			skip_next_arg = True  # We don't need to parse the next arg as it is a path
 
 		elif arg == "-o" or arg == "--output":
 			output_path = cmd_args[index + 1]  # the argument after '-o' is the output path
+			skip_next_arg = True  # We don't need to parse the next arg as it is a path
 
 
 		else:
@@ -44,7 +54,7 @@ def main():
 			return 1
 	
 	if input_path:
-		maze = load_maze.load(input_path)
+		g.maze = load_maze.load(input_path)
 	else:
 		print("No input path defined.")
 		print(strings.help_message)
@@ -54,7 +64,7 @@ def main():
 		print("No output path defined. Using default directory.")
 
 	# maze_solution will be a list of cells representing the solution path
-	maze_solution = solve.solve(maze)
+	maze_solution = solve.solve()
 
 	# call void function that outputs and image with the solution marked
 	create_final_image.create(maze_solution, input_path, output_path)

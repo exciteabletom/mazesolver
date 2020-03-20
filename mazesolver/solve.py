@@ -1,4 +1,5 @@
-maze = []  # Matrix representing the maze
+from . import g
+
 def get_cell_value(coords: tuple):
 	"""
 	Gets the value of the cell at the specified coordinates
@@ -6,7 +7,7 @@ def get_cell_value(coords: tuple):
 	:return: value of the cell at the specifed coordinates
 	"""
 	try:
-		return maze[coords[0]][coords[1]]
+		return g.maze[coords[0]][coords[1]]
 	# Sometimes we get an IndexError if the maze doesn't have borders
 	# This solution is not perfect however, so it is still best practice to use borders
 	except IndexError:
@@ -56,7 +57,7 @@ def get_cells_by_value(value):
 	:return: list of all coordinates that contain the specified value
 	"""
 	all_matching_cells = []  # the list containing all the coordinates of cells
-	for row_index, row in enumerate(maze):
+	for row_index, row in enumerate(g.maze):
 		for column_index, cell in enumerate(row):
 			if cell == value:
 				all_matching_cells.append((row_index, column_index))
@@ -82,7 +83,7 @@ def set_cell_value(coords: tuple, value: str or int):
 	:param coords: The coordinates of the cell to be changed
 	:param value: The value we want the cell to be set to
 	"""
-	maze[coords[0]][coords[1]] = value
+	g.maze[coords[0]][coords[1]] = value
 
 def get_final_path(end_pos: tuple):
 	"""
@@ -100,7 +101,7 @@ def get_final_path(end_pos: tuple):
 	while dist_from_start >= 0:
 		neighbours = get_cell_neighbours(current_cell, mode="backtrack")
 		for coords in neighbours:
-			if maze[coords[0]][coords[1]] == dist_from_start - 1:
+			if g.maze[coords[0]][coords[1]] == dist_from_start - 1:
 				current_cell = (coords[0], coords[1])
 				reverse_final_path.append(coords)
 				break
@@ -109,14 +110,12 @@ def get_final_path(end_pos: tuple):
 
 	return reverse_final_path
 
-def solve(maze: list):
+def solve():
 	"""
 	Main loop that solves the maze and outputs a list of cells representing a solution
 	
-	:param maze: A matrix representing the maze
 	:return: A list of tuples (cells) that make up the solution path
 	"""
-
 	start_pos: tuple = get_cell_by_value("s")  # coords of entrance
 	end_pos: tuple = get_cell_by_value("e")  # coords of exit of maze
 
