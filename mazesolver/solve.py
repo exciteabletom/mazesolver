@@ -1,8 +1,13 @@
-from . import g
+## solve.py - Tommy Dougiamas
+# This file contains all functions that interpret a maze matrix and provide a solution
+
+from . import g  # global variables
+
 
 def get_cell_value(coords: tuple):
 	"""
 	Gets the value of the cell at the specified coordinates
+
 	:param coords: tuple containing x and y values
 	:return: value of the cell at the specifed coordinates
 	"""
@@ -13,11 +18,12 @@ def get_cell_value(coords: tuple):
 	except IndexError:
 		return False
 
+
 def get_cell_neighbours(coords: tuple, mode="normal"):
 	"""
 	Gets the values of all cells that neighbour the cell at the specified coordinates
-	:param coords: Tuple containing the x and y values of the cell we
-				   want to check the neighbours of
+
+	:param coords: Tuple containing the x and y values of the cell to check the neighbours of
 	:param mode: specifies whether we are doing our first pass or backtracking from
 				 the exit. Is either "normal" (default) or "backtrack"
 	:return: coordinates of all neighbours that have not been visited in
@@ -50,9 +56,11 @@ def get_cell_neighbours(coords: tuple, mode="normal"):
 
 	return visitable_coordinates
 
+
 def get_cells_by_value(value):
 	""" 
 	Get cell coordinates based on the value of the cell.
+
 	:param value: The value to search cells for
 	:return: list of all coordinates that contain the specified value
 	"""
@@ -64,9 +72,11 @@ def get_cells_by_value(value):
 
 	return all_matching_cells
 
+
 def get_cell_by_value(value):
 	"""
 	The same as get_cells_by_value, except raises a ValueError if there is more than one cell with that value
+
 	:param value: The value to search cells for
 	:raises ValueError: If more then one of the value is found in the maze.
 	:return: the cell coordinate that contains the value
@@ -77,17 +87,21 @@ def get_cell_by_value(value):
 
 	return values[0]
 
+
 def set_cell_value(coords: tuple, value: str or int):
 	"""
 	Sets the value of a cell at the specified coordinates.
+
 	:param coords: The coordinates of the cell to be changed
 	:param value: The value we want the cell to be set to
 	"""
 	g.maze[coords[0]][coords[1]] = value
 
+
 def get_final_path(end_pos: tuple):
 	"""
 	Starts at the exit of the maze and works backwards to the entrance.
+
 	:return: a list of all the cell coordinates that make up the path from the exit to the entrance
 	"""
 	reverse_final_path = []  # stores a path from the exit to the entrance
@@ -110,11 +124,12 @@ def get_final_path(end_pos: tuple):
 
 	return reverse_final_path
 
+
 def solve():
 	"""
 	Main loop that solves the maze and outputs a list of cells representing a solution
 	
-	:return: A list of tuples (cells) that make up the solution path
+	:return: A list of tuples (x, y), representing the cells in the solution path
 	"""
 	start_pos: tuple = get_cell_by_value("s")  # coords of entrance
 	end_pos: tuple = get_cell_by_value("e")  # coords of exit of maze
@@ -144,6 +159,5 @@ def solve():
 		start_dist += 1
 
 	final_path = get_final_path(end_pos)
-	
-	return final_path
 
+	return final_path
