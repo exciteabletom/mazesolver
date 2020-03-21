@@ -1,6 +1,4 @@
 # Maze Solver
-### Created by Tommy Dougiamas  
-
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.
 
 
