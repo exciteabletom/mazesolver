@@ -5,3 +5,4 @@ venv/
 *egg*
 *build/
 *dist/
+*.whl
