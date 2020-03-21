@@ -36,5 +36,5 @@ What are the rules for maze images?
 Check out some of the example mazes at https://github.com/exciteabletom/mazesolver/tree/master/pics \
 """
 
-version = "1.2.5.post1"
+version = "1.2.5.post2"
 version_long = f"mazesolver{version}"
