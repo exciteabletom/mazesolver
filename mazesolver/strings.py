@@ -1,6 +1,4 @@
-"""
-This file contains all long strings used by the program
-"""
+# This file contains all long strings used by the program
 help_message = """\
 Valid Commands
 ---------------
