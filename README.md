@@ -7,9 +7,9 @@ This algorithm finds the shortest path through black and white maze images. It o
 Check that your python version is >=3.5 with `python3 -V`.
 Also make sure that pip is installed with `pip -V`.
 
-To install, simply run `pip3 install mazesolver --user` on the command line.
+To install, simply run `pip install mazesolver --user` on the command line.
 
-You can run the tool using `mazesolver`.
+You can run the tool using `mazesolver` or `mazesolver.exe`.
 
 ## What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
