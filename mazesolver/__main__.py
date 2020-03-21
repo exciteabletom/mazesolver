@@ -15,9 +15,9 @@ import sys
 
 def cmd_error(message=""):
 	if message:
-		print(message, "\n")
+		print(f"ERROR: {message}\n")
 
-	print(strings.help_message)
+	print("See --help for more info.")
 	exit(1)
 
 
@@ -31,16 +31,17 @@ def cmd_info(mode):
 	elif mode == "maze_rules":
 		print(strings.maze_rules)
 
+	else:
+		raise ValueError(f"DEV_ERROR: Option {mode} is not valid for cmd_info ")
+
 	exit(0)
 
 
 def main():
 	input_path = ""  # Where the unsolved maze is
 	output_dir = ""  # The directory for the picture to be outputted to
-	cmd_args = []  # List storing all command line arguments
 
-	# Command line argument interpreter
-	cmd_args = sys.argv[1:]
+	cmd_args = sys.argv[1:]  # List storing all command line arguments
 	if len(cmd_args) == 0:  # if no arguments were given
 		cmd_error("No arguments provided.")
 
@@ -77,16 +78,23 @@ def main():
 			cmd_error(f"Option {arg} requires an parameter.")
 
 	if input_path:
-		g.maze = load_maze.load(input_path)
+		try:
+			g.maze = load_maze.load(input_path)
+		except FileNotFoundError:
+			cmd_error(f"File {input_path} doesn't exist.")
 
 	else:  # Make sure that an image path is defined
 		cmd_error("No input path defined.")
 
 	if not output_dir:
-		print("No output directory supplied. Using default directory...\n")
+		print("No output directory supplied. Using default directory...")
 
 	# maze_solution will be a list of cells representing the solution path
-	maze_solution = solve.solve()
+	maze_solution = []
+	try:
+		maze_solution = solve.solve()
+	except IndexError or IndexError:
+		cmd_error("Your maze was not valid! Make sure that it complies with the maze rules.")
 
 	# call void function that outputs and image with the solution marked
 	create_final_image.create(maze_solution, input_path, output_dir)

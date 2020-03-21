@@ -20,7 +20,7 @@ setup(
 	author_email="tom@digitalnook.net",
 
 	classifiers=[
-		#"Development Status :: 5 - Stable",
+		# "Development Status :: 5 - Stable",
 
 		"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 
