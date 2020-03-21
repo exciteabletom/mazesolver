@@ -21,6 +21,6 @@ Github: https://github.com/exciteabletom
 *Licensed under GPLv3* [https://www.gnu.org/licenses/gpl-3.0.en.html]
 """
 
-version="1.2.2.post1"
-version_long=f"mazesolver {version}"
+version="1.2.3-post1"
+version_long=f"mazesolver{version}"
 

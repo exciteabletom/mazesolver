@@ -8,6 +8,22 @@ from . import g  # globals
 ## Environment Agnostic imports
 import sys
 
+def cmd_error(message=""):
+	if message:
+		print(message,"\n")
+
+	print(strings.help_message)
+	exit(1)
+
+def cmd_info(mode):
+	if mode == "help":
+		print(strings.help_message)
+
+	elif mode == "version":
+		print(strings.version_long)
+	
+	exit(0)
+	
 
 def main():
 	input_path = ""  # Where the unsolved maze is
@@ -17,51 +33,47 @@ def main():
 	# Command line argument interpreter
 	cmd_args = sys.argv[1:]
 	if len(cmd_args) == 0:  # if no arguments were given
-		print("No arguments provided.")
-		print(strings.help_message)
-		return 1
+		cmd_error("No arguments provided.")
 
 	# Help command
 	if "--help" in cmd_args or "-h" in cmd_args:
-		print(strings.help_message)
-		return 0
+		cmd_info("help")
 	
 	elif "-v" in cmd_args or "--version" in cmd_args:
-		print(strings.version_long)
-		return 0 
+		cmd_info("version")
 
-	# Main solve commands
+
 	skip_next_arg = False  # Boolean indicating whether the current interation should be skipped
 
+	# Loop handling arguments that have params like "-i" and "-o"
 	for index, arg in enumerate(cmd_args):
-		breakpoint()
 		if skip_next_arg == True:
 			skip_next_arg = False
 			continue
+		try:
+			if arg == "-i" or arg == "--input":
+				input_path = cmd_args[index + 1]  # the argument after '-i' is the input path
+				skip_next_arg = True  # We don't need to parse the next arg as it is a file-path
 
-		if arg == "-i" or arg == "--input":
-			input_path = cmd_args[index + 1]  # the argument after '-i' is the input path
-			skip_next_arg = True  # We don't need to parse the next arg as it is a path
-
-		elif arg == "-o" or arg == "--output":
-			output_path = cmd_args[index + 1]  # the argument after '-o' is the output path
-			skip_next_arg = True  # We don't need to parse the next arg as it is a path
+			elif arg == "-o" or arg == "--output":
+				output_path = cmd_args[index + 1]  # the argument after '-o' is the output path
+				skip_next_arg = True  # We don't need to parse the next arg as it is a file-path
 
 
-		else:
-			print(f"Option {arg} not recognised.\n")
-			print(strings.help_message)
-			return 1
+			else:
+				cmd_error(f"Option {arg} not recognised.")
+
+		except IndexError:  # If no parameter is passed to the argument
+			cmd_error(f"Option {arg} requires an parameter.")
 	
 	if input_path:
 		g.maze = load_maze.load(input_path)
+
 	else:
-		print("No input path defined.")
-		print(strings.help_message)
-		exit(1)
+		cmd_error("No input path defined.")
 
 	if not output_path:
-		print("No output path defined. Using default directory.")
+		print("No output path defined. Using default directory.\n")
 
 	# maze_solution will be a list of cells representing the solution path
 	maze_solution = solve.solve()
