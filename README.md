@@ -6,8 +6,6 @@ This algorithm finds the shortest path through black and white maze images. It o
 
 ## Installing
 
-### **Easy Installation**
-
 Check that your python version is >=3.5 with `python3 -V`.
 Also make sure that pip is installed with `pip -V`.
 
@@ -49,6 +47,3 @@ Normal usage will look something like this: `mazesolver -i path/to/input_img -o 
 - Start from the exit of the maze and move to any neighbouring cell that == the current cell's number -1. Until we reach 0 (the entrance).
 
 We now have the shortest path from the entrance to the exit!
-
-
-> Licensed under GNU GPLv3
