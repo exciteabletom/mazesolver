@@ -15,32 +15,6 @@ To install, simply run `pip install mazesolver --user` on the command line.
 
 You can run the tool using `mazesolver`.
 
-### **Install from source**
-
-**For GNU/Linux:**
-
-`git clone https://github.com/exciteabletom/mazesolver.git`
-
-`cd mazesolver`
-
-`./setup.py build`
-
-`sudo ./setup.py install`
-
-**For Windows CMD:**
-
-Make sure your prompt has admin permissions.
-
-`git clone https://github.com/exciteabletom/mazesolver.git`
-
-`chdir mazesolver`
-
-`python3 setup.py build`
-
-`python3 setup.py install`
-
-
-
 ## What are the rules for maze images?
 - Walls marked with black pixels and paths marked with white pixels
 
