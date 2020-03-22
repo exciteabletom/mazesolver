@@ -92,7 +92,6 @@ def main():
 
 	if not output_dir:
 		output_dir_lst = input_path.split(str(Path("/")))[0:-1]
-		breakpoint()
 		if output_dir_lst:
 			output_dir = str(Path("/")).join(output_dir_lst)
 		else:
