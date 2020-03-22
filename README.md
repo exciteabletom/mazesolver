@@ -1,6 +1,8 @@
 # Maze Solver
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.
 
+<img src="pics/crazyMazeBig.jpg"/>
+<img src="pics/crazyMazeBig_out.jpg"/>
 
 ## Installing
 
