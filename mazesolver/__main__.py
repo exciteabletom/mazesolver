@@ -11,6 +11,13 @@ from . import g  # globals
 
 # Standard library imports
 import sys
+import os
+
+# Check if we are running on windows
+# If so we need to use different file path delimiters "\\" vs "/"
+if os.name == "nt":  # If we are on windows
+	g.is_windows = True
+	g.file_delimiter = "\\"
 
 
 def cmd_error(message=""):
@@ -41,7 +48,7 @@ def main():
 	input_path = ""  # Where the unsolved maze is
 	output_dir = ""  # The directory for the picture to be outputted to
 
-	cmd_args = sys.argv[1:]  # List storing all command line arguments
+	cmd_args = sys.argv[1:]  # List storing all command line arguments passed to the program
 	if len(cmd_args) == 0:  # if no arguments were given
 		cmd_error("No arguments provided.")
 
@@ -87,7 +94,10 @@ def main():
 		cmd_error("No input path defined.")
 
 	if not output_dir:
-		print("No output directory supplied. Using default directory...")
+		output_dir_lst = input_path.split(g.file_delimiter)[0:-1]
+		output_dir = g.file_delimiter.join(output_dir_lst)
+
+		print(f"No output directory supplied. Using default directory: {output_dir}")
 
 	# maze_solution will be a list of cells representing the solution path
 	maze_solution = []
