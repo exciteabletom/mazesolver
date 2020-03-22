@@ -11,6 +11,13 @@ from . import g  # globals
 
 # Standard library imports
 import sys
+import os
+
+# Check if we are running on windows
+# If so we need to use different file path delimiters "\\" vs "/"
+if os.name == "nt":  # If we are on windows
+	g.is_windows = True
+	g.file_delimiter = "\\"
 
 
 def cmd_error(message=""):
@@ -41,7 +48,7 @@ def main():
 	input_path = ""  # Where the unsolved maze is
 	output_dir = ""  # The directory for the picture to be outputted to
 
-	cmd_args = sys.argv[1:]  # List storing all command line arguments
+	cmd_args = sys.argv[1:]  # List storing all command line arguments passed to the program
 	if len(cmd_args) == 0:  # if no arguments were given
 		cmd_error("No arguments provided.")
 
@@ -77,6 +84,9 @@ def main():
 		except IndexError:  # If no parameter is passed to the argument
 			cmd_error(f"Option {arg} requires an parameter.")
 
+	if not os.path.exists(input_path):  # if dir doesn't exist
+		cmd_error(f"Image {input_path} does not exist")
+
 	if input_path:
 		try:
 			g.maze = load_maze.load(input_path)
@@ -87,16 +97,23 @@ def main():
 		cmd_error("No input path defined.")
 
 	if not output_dir:
-		print("No output directory supplied. Using default directory...")
+		output_dir_lst = input_path.split(g.file_delimiter)[0:-1]
+		output_dir = g.file_delimiter.join(output_dir_lst)
+
+		print(f"No output directory supplied. Using default directory: {output_dir}")
+	
+	if os.path.isdir(output_dir):
+		cmd_error(f"Output directory {output_dir} doesn't exist or is not a directory")
 
 	# maze_solution will be a list of cells representing the solution path
 	maze_solution = []
 	try:
-		maze_solution = solve.solve()
-	except IndexError or IndexError:
+		maze_solution = solve.solve()  # Try to solve the maze
+	except IndexError or ValueError as e:  # Errors that occur when the maze image is not valid
+		# print(e, e.message)  # Debugging calls
 		cmd_error("Your maze was not valid! Make sure that it complies with the maze rules.")
 
 	# call void function that outputs and image with the solution marked
 	create_final_image.create(maze_solution, input_path, output_dir)
 
-	return 0
+	exit(0)  # Success!
