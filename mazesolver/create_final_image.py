@@ -3,6 +3,8 @@
 # into an image where those coords are marked in green
 
 from PIL import Image  # Pillow >=6.0
+from pathlib import Path
+
 from . import g  # globals
 
 
@@ -19,10 +21,10 @@ def create(solution_path, input_path, output_dir=None):
 	for i in solution_path:  # for every pixel in the solution path
 		solution_image.putpixel((i[1], i[0]), (0, 255, 0))  # change the pixel to solid green
 
-	full_image_name = input_path.split(g.file_delimiter)[-1]  # eg path/to/maze.jpg --> maze.jpg
+	full_image_name = input_path.split(str(Path("/")))[-1]  # eg path/to/maze.jpg --> maze.jpg
 	image_name, image_ext = [i for i in full_image_name.split(".")]  # eg maze.jpg --> maze, .jpg
 
-	out_path = f"{output_dir}{g.file_delimiter}{image_name}_out.{image_ext}"  # Where the image will be saved to
+	out_path = Path(f"{output_dir}/{image_name}_out.{image_ext}")  # Where the image will be saved to
 
 	solution_image.save(out_path, subsampling=0, quality=100)  # No aliasing or down-sampling
 

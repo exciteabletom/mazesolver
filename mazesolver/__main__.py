@@ -12,13 +12,7 @@ from . import g  # globals
 # Standard library imports
 import sys
 import os
-
-# Check if we are running on windows
-# If so we need to use different file path delimiters "\\" vs "/"
-if os.name == "nt":  # If we are on windows
-	g.is_windows = True
-	g.file_delimiter = "\\"
-
+from pathlib import Path  # Used to fix incompatibilities between windows and unix-based file paths "/" vs "\\"
 
 def cmd_error(message=""):
 	if message:
@@ -97,12 +91,16 @@ def main():
 		cmd_error("No input path defined.")
 
 	if not output_dir:
-		output_dir_lst = input_path.split(g.file_delimiter)[0:-1]
-		output_dir = g.file_delimiter.join(output_dir_lst)
+		output_dir_lst = input_path.split(str(Path("/")))[0:-1]
+		breakpoint()
+		if output_dir_lst:
+			output_dir = str(Path("/")).join(output_dir_lst)
+		else:
+			output_dir = str(Path("./"))  # ./ or .\\
 
 		print(f"No output directory supplied. Using default directory: {output_dir}")
 	
-	if os.path.isdir(output_dir):
+	if not os.path.isdir(output_dir):
 		cmd_error(f"Output directory {output_dir} doesn't exist or is not a directory")
 
 	# maze_solution will be a list of cells representing the solution path
