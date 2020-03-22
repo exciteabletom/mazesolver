@@ -1,6 +1,6 @@
 # Maze Solver
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.
-
+![Upload Python Package](https://github.com/exciteabletom/mazesolver/workflows/Upload%20Python%20Package/badge.svg)
 <img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/crazyMazeBig.jpg"/>
 <img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/crazyMazeBig_out.jpg"/>
 
