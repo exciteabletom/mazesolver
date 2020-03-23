@@ -1,20 +1,6 @@
 # Main project Directory
 Contains the main package that is built by `../setup.py`   
 
-- Typical workflow looks like this:
-   `
-   __main__.py  # Run by user from command-line
-   |
-   ----->maze_matrix=load_maze.load(input_path)
-	   |
-	   V
-	   -->solution=solve.solve(maze_matrix) 
-	   |
-	   V
-	   -->create_final_image.create(solution, output_directory)
-   `
-      
-
 - `g.py`
    - Stores all variables that need to be manipulated by multiple files. (global variables)    
 
