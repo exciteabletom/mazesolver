@@ -1,4 +1,4 @@
-# Main project Directory
+## Main Project Directory
 Contains the main package that is built by `../setup.py`   
 
 - `g.py`
