@@ -2,8 +2,8 @@
 This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.   
    
    
-<img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/crazyMazeBig.jpg"/>
-<img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/crazyMazeBig_out.jpg"/>
+<img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/mazeBig.jpg"/>
+<img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/mazeBig_out.jpg"/>
 
 ## Installing
 
