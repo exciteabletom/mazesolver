@@ -1,5 +1,5 @@
 ## Main Project Directory
-Contains the main package that is built by `../setup.py`   
+Contains the main project files that are used by `../setup.py` to build dists     
 
 - `g.py`
    - Stores all variables that need to be manipulated by multiple files. (global variables)    
