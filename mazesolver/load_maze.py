@@ -15,6 +15,7 @@ def load(input_path):
 	:return: A matrix representing the maze
 	"""
 	input_img = Image.open(input_path)  # open the image
+
 	pixels = input_img.load()  # load the pixels from the image
 
 	width, height = input_img.size  # get width and height of image

@@ -3,7 +3,7 @@
 # into an image where those coords are marked in green
 
 from PIL import Image  # Pillow >=6.0
-from pathlib import Path
+from pathlib import Path  # OS agnostic filesystem paths
 
 from . import g  # globals
 
@@ -26,7 +26,7 @@ def create(solution_path, input_path, output_dir=None):
 
 	out_path = Path(f"{output_dir}/{image_name}_out.{image_ext}")  # Where the image will be saved to
 
-	solution_image.save(out_path, subsampling=0, quality=100)  # No aliasing or down-sampling
+	solution_image.save(out_path, subsampling=0, quality=100)  # Save the image with no aliasing or down-sampling
 
 	print(f"The solution to {input_path} was saved at {out_path}")  # Make sure the user knows where the image was saved
 

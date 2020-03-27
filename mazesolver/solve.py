@@ -127,9 +127,9 @@ def get_final_path(end_pos: tuple):
 
 def solve():
 	"""
-	Main loop that solves the maze and outputs a list of cells representing a solution
+	Main entrypoint that solves the maze and outputs a list of cells representing a solution
 	
-	:return: A list of tuples (x, y), representing the cells in the solution path
+	:return: A list of tuples (x, y) representing the cells in the solution path
 	"""
 	start_pos: tuple = get_cell_by_value("s")  # coords of entrance
 	end_pos: tuple = get_cell_by_value("e")  # coords of exit of maze
