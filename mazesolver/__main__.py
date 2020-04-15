@@ -114,7 +114,7 @@ def main():
 	maze_solution = []
 	try:
 		maze_solution = solve.solve()  # Try to solve the maze
-	except IndexError or ValueError as e:  # Errors that occur when the maze image is not valid
+	except (IndexError, ValueError) as e:  # Errors that occur when the maze image is not valid
 		# print(e, e.message)  # Debugging calls
 		cmd_error("Your maze was not valid! Make sure that it complies with the maze rules.")
 
