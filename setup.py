@@ -32,7 +32,7 @@ setup(
 		"console_scripts": ["mazesolver = mazesolver.__main__:main"],
 	},
 
-	keywords="maze algortihm image solve",
+	keywords="maze algorithm image solve",
 
 	packages=["mazesolver"],
 
