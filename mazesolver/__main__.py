@@ -16,9 +16,9 @@ from pathlib import Path  # Used to fix incompatibilities between windows and un
 
 def cmd_error(message=""):  # Display error message and exit the program with exit code 1
 	if message:
-		print(f"ERROR: {message}\n")
+		print(f"ERROR: {message}\n", file=sys.stderr)
 
-	print("See --help for more info.")
+	print("See --help for more info.", file=sys.stderr)
 	exit(1)
 
 
@@ -33,7 +33,8 @@ def cmd_info(mode):  # Display information and exit the program with exit code 0
 		print(strings.maze_rules)
 
 	else:
-		raise ValueError(f"DEV_ERROR: Option '{mode}' is not valid for cmd_info ")  # If the mode was not valid warn, so then it doesn't get into prod
+		raise ValueError(f"DEV_ERROR: Option '{mode}' is not valid for cmd_info ", file=sys.stderr)  # If the mode was not valid warn, so then it doesn't get into prod
+		exit(1)
 
 	exit(0)
 
