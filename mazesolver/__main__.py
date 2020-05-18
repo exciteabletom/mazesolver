@@ -27,7 +27,7 @@ def cmd_info(mode):  # Display information and exit the program with exit code 0
 		print(strings.help_message)
 
 	elif mode == "version":
-		print(strings.version_long)
+		print(strings.version)
 
 	elif mode == "maze_rules":
 		print(strings.maze_rules)
