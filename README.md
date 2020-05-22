@@ -15,11 +15,14 @@ To install, simply run `python3 -m pip install mazesolver --user` on the command
 You can run the tool using `mazesolver` or `mazesolver.exe`.
 
 ## What are the rules for maze images?
+
 - Walls marked with black pixels and paths marked with white pixels
 
 - Walls around the entire maze
 
 - One entrance on the top row and one exit on the bottom row
+
+You can generate a compatible maze using <a href="//github.com/exciteabletom/mazegenerator">mazegenerator</a>, or just make your own image in an image editing program.
 
 *If this is confusing, check out some of the example mazes in the **pics** directory.*
 
