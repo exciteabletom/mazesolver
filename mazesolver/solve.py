@@ -2,6 +2,7 @@
 # This file contains all functions that interpret a maze matrix and provide a solution
 
 from . import g  # global variables
+import progress.bar
 
 
 def get_cell_value(coords: tuple):
@@ -112,15 +113,23 @@ def get_final_path(end_pos: tuple):
 
 	dist_from_start = get_cell_value(end_pos)  # the distance from the entrance
 
+	progress_bar = progress.bar.PixelBar(g.change_string_length("Finding solution path", 30), max=len(g.maze) - 1)
+	latest_row = len(g.maze) - 1
 	while dist_from_start >= 0:
 		neighbours = get_cell_neighbours(current_cell, mode="backtrack")
 		for coords in neighbours:
+			if coords[0] == latest_row - 1:
+				latest_row -= 1
+				progress_bar.next()
+
 			if g.maze[coords[0]][coords[1]] == dist_from_start - 1:
 				current_cell = (coords[0], coords[1])
 				reverse_final_path.append(coords)
 				break
 
 		dist_from_start = dist_from_start - 1
+
+	progress_bar.finish()
 
 	return reverse_final_path
 
@@ -138,25 +147,38 @@ def solve():
 
 	start_dist = 0  # the distance from the entrance
 
+	progress_bar = progress.bar.PixelBar(g.change_string_length("Enumerating maze", 30), max=len(g.maze) - 1)
+	current_progress = 0
 	# main program loop
 	# exits when all cells have been searched
 	while True:
-		open_coordinates = []  # a list containing all coordinates that can be travelled to
+		open_cells = []  # a list containing all coordinates that can be travelled to
 
-		# for cells that contain a value equal to the furthest distance from the start
-		for cell in get_cells_by_value(start_dist):
+		# cells that contain a value equal to the furthest distance from the start
+		next_cells = get_cells_by_value(start_dist)
+
+		for cell in next_cells:
 			neighbours = get_cell_neighbours(cell)  # get all open neighbouring cells
-			for neighbour in neighbours:
-				open_coordinates.append(neighbour)  # append all neighbours to our master open coords list
 
-		if not open_coordinates:  # if there were no more open coordinates
+			for neighbour in neighbours:
+				if not neighbour in open_cells:
+					open_cells.append(neighbour)  # append all neighbours to our master open coords list
+
+		if not open_cells:  # if there were no more open coordinates
+			progress_bar.next()
 			set_cell_value(end_pos, start_dist + 1)
 			break  # then we must have parsed every cell in the maze
 
-		for pos in open_coordinates:
-			set_cell_value(pos, start_dist + 1)
+		for cell in open_cells:
+			if cell[0] > current_progress:
+				progress_bar.next(cell[0] - current_progress)
+				current_progress = cell[0]
+
+			set_cell_value(cell, start_dist + 1)
 
 		start_dist += 1
+
+	progress_bar.finish()
 
 	final_path = get_final_path(end_pos)
 

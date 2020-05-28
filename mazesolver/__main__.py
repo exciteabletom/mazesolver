@@ -104,8 +104,7 @@ def main():
 		if output_dir_lst:
 			output_dir = str(Path("/")).join(output_dir_lst)
 		else:
-			output_dir = str(Path("./"))  # ./ or .\\
-
+			output_dir = str(Path.cwd())  # working directory
 		print(f"No output directory supplied. Using default directory: '{output_dir}'")
 	
 	if not os.path.isdir(output_dir):

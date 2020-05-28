@@ -4,6 +4,7 @@
 
 from PIL import Image  # Pillow >=6.0
 from pathlib import Path  # OS agnostic filesystem paths
+import progress.bar
 
 from . import g  # globals
 
@@ -17,9 +18,12 @@ def create(solution_path, input_path, output_dir=None):
 	:param output_dir: String with User-supplied path to a directory where the image will be saved
 	"""
 	solution_image = Image.open(input_path)  # open the image that was inputted
-
+	progress_bar = progress.bar.PixelBar(g.change_string_length("Drawing solution path", 30), max=len(solution_path))
 	for i in solution_path:  # for every pixel in the solution path
+		progress_bar.next()
 		solution_image.putpixel((i[1], i[0]), (0, 255, 0))  # change the pixel to solid green
+
+	progress_bar.finish()
 
 	full_image_name = input_path.split(str(Path("/")))[-1]  # eg path/to/maze.jpg --> maze.jpg
 	image_name, image_ext = [i for i in full_image_name.split(".")]  # eg maze.jpg --> maze, .jpg
