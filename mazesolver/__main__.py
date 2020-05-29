@@ -105,7 +105,6 @@ def main():
 			output_dir = str(Path("/")).join(output_dir_lst)
 		else:
 			output_dir = str(Path.cwd())  # working directory
-		print(f"No output directory supplied. Using default directory: '{output_dir}'")
 	
 	if not os.path.isdir(output_dir):
 		cmd_error(f"Output directory '{output_dir}' doesn't exist or is not a directory")
