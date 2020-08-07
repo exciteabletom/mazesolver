@@ -1,5 +1,5 @@
 # Maze Solver
-This algorithm finds the shortest path through black and white maze images. It outputs an image with the path marked in green.   
+This program finds the shortest path through black and white maze images. It outputs an image with the path marked in green.   
    
    
 <img src="https://raw.githubusercontent.com/exciteabletom/mazesolver/master/pics/upscaled_maze.jpg"/>
