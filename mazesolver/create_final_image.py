@@ -17,6 +17,8 @@ def create(solution_path, input_path, output_dir=None):
 	:param input_path: String with User-supplied path to input maze image
 	:param output_dir: String with User-supplied path to a directory where the image will be saved
 	"""
+	print("Saving Image... This may take a long time for bigger mazes")
+
 	solution_image = Image.open(input_path)  # open the image that was inputted
 	progress_bar = progress.bar.PixelBar(g.change_string_length("Drawing solution path", 30), max=len(solution_path))
 	for i in solution_path:  # for every pixel in the solution path
@@ -30,7 +32,6 @@ def create(solution_path, input_path, output_dir=None):
 
 	out_path = Path(f"{output_dir}/{image_name}_out.{image_ext}")  # Where the image will be saved to
 
-	print("Saving Image... This may take a long time for bigger mazes")
 	solution_image.save(out_path, subsampling=0, quality=100)  # Save the image with no aliasing or down-sampling
 
 	print(f"The solution to {input_path} was saved at {out_path}")  # Make sure the user knows where the image was saved
